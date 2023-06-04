@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Cinemachine;
+using UnityEngine.Serialization;
+using Toggle = UnityEngine.UI.Toggle;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private Toggle toggle;
+    [SerializeField] private bool useToggle;
     private bool isPaused = false;
 
     private void Awake()
@@ -27,6 +28,11 @@ public class GameManager : MonoBehaviour
             {
                 PauseGame();
             }
+        }
+
+        if (useToggle)
+        {
+            playerHealth.isInvincible = toggle.isOn;
         }
     }
 

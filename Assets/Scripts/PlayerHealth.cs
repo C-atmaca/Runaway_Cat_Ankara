@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public bool isInvincible = false;
+    
     [SerializeField] private int health;
     [SerializeField] private int numberOfHearts;
 
@@ -29,7 +31,10 @@ public class PlayerHealth : MonoBehaviour
 
     public void ChangeHealth(int number)
     {
-        health += number;
+        if (!isInvincible)
+        {
+            health += number;
+        }
     }
 
     private void ShowHealth()

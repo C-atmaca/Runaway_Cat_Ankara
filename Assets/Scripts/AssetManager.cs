@@ -5,6 +5,8 @@ using Cinemachine;
 
 public class AssetManager : MonoBehaviour
 {
+    [SerializeField] private bool isFirstLevel;
+    
     [Header("Level Triggers")]
     [SerializeField] private LevelEndTrigger level1EndTrigger;
     [SerializeField] private LevelEndTrigger level2EndTrigger;
@@ -32,6 +34,7 @@ public class AssetManager : MonoBehaviour
 
     void Start()
     {
+        if (isFirstLevel) return;
         level1EndTrigger.level1Done += LoadLevel2Assets;
         level2EndTrigger.level2Done += LoadLevel3Assets;
         level3EndTrigger.level3Done += LoadLevel4Assets;
